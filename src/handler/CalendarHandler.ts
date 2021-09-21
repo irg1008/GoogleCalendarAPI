@@ -1,4 +1,4 @@
-import { Config } from "config/Config.types";
+import { Config } from "types/Calendar.types";
 import { getCalendarEvents } from "middlewares/calendar";
 import { EventQuery } from "types/Calendar.types";
 

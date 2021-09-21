@@ -16,6 +16,11 @@ interface EventAPIParams {
 	key: string;
 }
 
+interface Config {
+	apiKey: string;
+	calId: string;
+}
+
 type EventResponse = any;
 
-export { EventQuery, EventResponse, GeneralEventQuery, EventAPIParams };
+export { EventQuery, EventResponse, GeneralEventQuery, EventAPIParams, Config };
