@@ -1,11 +1,13 @@
 {
 	"name": "google-calendar-node-api",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "A wrapper for the google calendar api.",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
 		"prepublish": "tsc",
+		"publish": "npm publish",
+		"link": "npm link",
 		"dev": "cross-env NODE_PATH=./src ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
 		"start": "cross-env NODE_PATH=./dist node ./dist/index.js",
 		"test": "jest --coverage",
