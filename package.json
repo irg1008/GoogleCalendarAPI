@@ -4,7 +4,6 @@
 	"description": "",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
-	"type": "module",
 	"scripts": {
 		"prepublish": "tsc",
 		"dev": "cross-env NODE_PATH=./src ts-node-dev --respawn --transpile-only --poll ./src/index.ts",
