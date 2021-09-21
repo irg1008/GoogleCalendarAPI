@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import {
 	GeneralEventQuery,
 	EventResponse,
@@ -18,7 +18,7 @@ const withMiddle = async <T>(fn: () => Promise<T>): Promise<MiddleData<T>> => {
 		const data = await fn();
 		return { data, error: null };
 	} catch (error) {
-		return { data: null, error: error };
+		return { data: null, error: (error as AxiosError).response.data };
 	}
 };
 
