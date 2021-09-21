@@ -1,10 +1,10 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import {
 	GeneralEventQuery,
 	EventResponse,
 	EventAPIParams,
-} from "../types/Calendar.types";
-import { parseDate } from "../utils/time";
+} from "@/types/Calendar.types";
+import { parseDate } from "@/utils/time";
 
 const apiURL = "https://www.googleapis.com/calendar/v3/calendars/";
 

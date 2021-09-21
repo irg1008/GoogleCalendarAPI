@@ -5,6 +5,7 @@
     ],
     "moduleResolution": "node",
     "target": "ESNext",
+    "rootDir": "src",
     "outDir": "dist",
     "module": "commonjs",
     "sourceMap": true,
@@ -16,7 +17,12 @@
     "skipDefaultLibCheck": true,
     "declaration": true,
     "resolveJsonModule": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src"
