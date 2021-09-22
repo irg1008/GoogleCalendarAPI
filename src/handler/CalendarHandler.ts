@@ -1,5 +1,5 @@
-import { Config, EventQuery } from "@/types/Calendar.types";
-import { getCalendarEvents } from "@/middlewares/calendar";
+import { Config, EventQuery } from "src/types/Calendar.types";
+import { getCalendarEvents } from "src/middlewares/calendar";
 
 class CalendarHandler {
 	private calId: string;

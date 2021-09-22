@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
 import {
 	GeneralEventQuery,
-	EventResponse,
+	Events,
 	EventAPIParams,
-} from "@/types/Calendar.types";
-import { parseDate } from "@/utils/time";
+} from "src/types/Calendar.types";
+import { parseDate } from "src/utils/time";
 
 const apiURL = "https://www.googleapis.com/calendar/v3/calendars/";
 
@@ -29,7 +29,7 @@ const getCalendarEvents = ({
 	calId,
 	apiKey,
 }: GeneralEventQuery) =>
-	withMiddle<EventResponse>(async () => {
+	withMiddle<Events>(async () => {
 		const timeMin = parseDate(from);
 		const timeMax = parseDate(to);
 
@@ -42,7 +42,7 @@ const getCalendarEvents = ({
 			key: apiKey,
 		};
 
-		const res = await axios.get<EventResponse>(url, { params });
+		const res = await axios.get<Events>(url, { params });
 		return res.data;
 	});
 

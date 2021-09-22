@@ -1,2 +1,2 @@
-import CalendarHandler from "@/handler";
+import CalendarHandler from "src/handler";
 export default CalendarHandler;
