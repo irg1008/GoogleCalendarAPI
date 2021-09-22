@@ -1,10 +1,9 @@
 import axios, { AxiosError } from "axios";
 import {
-	GeneralEventQuery,
 	Events,
-	EventAPIParams,
+	EventMiddlewareParams,
+	Config,
 } from "src/types/Calendar.types";
-import { parseDate } from "src/utils/time";
 
 const apiURL = "https://www.googleapis.com/calendar/v3/calendars/";
 
@@ -23,28 +22,20 @@ const withMiddle = async <T>(fn: () => Promise<T>): Promise<MiddleData<T>> => {
 };
 
 const getCalendarEvents = ({
-	from,
-	to,
-	query,
 	calId,
 	apiKey,
-}: GeneralEventQuery) =>
+	...middleParams
+}: EventMiddlewareParams) =>
 	withMiddle<Events>(async () => {
-		const timeMin = parseDate(from);
-		const timeMax = parseDate(to);
-
 		const url = `${apiURL}${calId}/events`;
-
-		const params: EventAPIParams = {
-			timeMin,
-			timeMax,
-			q: query,
-			key: apiKey,
-		};
-
-		const res = await axios.get<Events>(url, { params });
+		const res = await axios.get<Events>(url, {
+			params: {
+				key: apiKey,
+				...middleParams,
+			},
+		});
 		return res.data;
 	});
-
+	
 export { getCalendarEvents };
 export type { MiddleData };

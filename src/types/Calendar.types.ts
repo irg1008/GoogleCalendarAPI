@@ -1,28 +1,8 @@
 import { Timezone } from "./Timezone.types";
 
-export interface EventQuery {
-	from?: Date;
-	to?: Date;
-	query?: string;
-}
+// See: https://developers.google.com/calendar/api/v3/reference/
 
-export interface GeneralEventQuery extends EventQuery {
-	calId: string;
-	apiKey: string;
-}
-
-export interface EventAPIParams {
-	timeMin: string;
-	timeMax: string;
-	q: string;
-	key: string;
-}
-
-export interface Config {
-	apiKey: string;
-	calId: string;
-}
-
+type OrderBy = "startTime" | "updated";
 type Role = "reader";
 type Status = "confirmed" | "tentative" | "cancelled";
 type Transparency = "opaque" | "transparent";
@@ -30,11 +10,38 @@ type Visibility = "default" | "public" | "private" | "confidential";
 type EventType = "default" | "outOfOffice";
 type etag = string;
 type Reminder = any;
+type Datetime = string;
+
+export interface EventParams {
+	q?: string;
+	iCalUID?: string;
+	maxAttendees?: number;
+	maxResults?: number;
+	orderBy?: OrderBy;
+	pageToken?: string;
+	showDeleted?: boolean;
+	showHiddenInvitations?: boolean;
+	sharedExtendedProperty?: string;
+	privateExtendedProperty?: string;
+	updatedMin?: Datetime;
+	timeZone?: Timezone;
+	timeMin?: Datetime;
+	timeMax?: Datetime;
+	syncToken?: string;
+	singleEvents?: boolean;
+}
+
+export interface Config {
+	apiKey: string;
+	calId: string;
+}
+
+export type EventMiddlewareParams = EventParams & Config;
 
 interface EventDate {
 	date: Date;
-	dateTime: string;
-	timeZone: string;
+	dateTime: Datetime;
+	timeZone: Timezone;
 }
 
 interface User {
@@ -77,8 +84,8 @@ export interface Event {
 	id: string;
 	status: Status;
 	htmlLink: string;
-	created: string;
-	updated: string;
+	created: Datetime;
+	updated: Datetime;
 	summary: string;
 	description: string;
 	location: string;
