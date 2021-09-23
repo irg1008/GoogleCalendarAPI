@@ -8,7 +8,7 @@ class Calendar {
 		this.config = config;
 	}
 
-	public updateConfig = (newConfig: Config) => (this.config = newConfig);
+	updateConfig = (newConfig: Config) => (this.config = newConfig);
 
 	getEvents = (eventParams: EventParams) =>
 		getCalendarEvents({
